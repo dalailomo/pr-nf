@@ -26,7 +26,10 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+
+/*********************************************************************************/
 /******************************************************* Movement and mouse look */
+/*********************************************************************************/
 private:
 	/** Base turn rate, in deg/sec. Other scaling may affect turn rate */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
@@ -88,7 +91,10 @@ protected:
 	void Lookup(float Value);
 
 
+
+/****************************************************************/
 /******************************************************* Camera */
+/****************************************************************/
 private: 
 	/** Camera attached to this character */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
@@ -104,6 +110,10 @@ private:
 	float CameraCurrentFOV;
 
 	/** Zoom interpolation speed when aiming */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Combat, meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	float ZoomInterpSpeed;
+
+	/** Camera shake component */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Camera, meta = (AllowPrivateAccess = "true"))
+	TSubclassOf<UCameraShake> CameraHeadBobbing;
 };

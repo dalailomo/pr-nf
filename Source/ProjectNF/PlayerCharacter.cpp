@@ -92,6 +92,11 @@ void APlayerCharacter::MoveForward(float Value)
 
 		const FVector Direction{ FRotationMatrix{YawRotation}.GetUnitAxis(EAxis::X) };
 		AddMovementInput(Direction, Value);
+
+		if (CameraHeadBobbing != nullptr)
+		{
+			GetWorld()->GetFirstPlayerController()->PlayerCameraManager->PlayCameraShake(CameraHeadBobbing, fabs(Value));
+		}
 	}
 }
 
