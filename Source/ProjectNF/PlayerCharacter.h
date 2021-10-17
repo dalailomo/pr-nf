@@ -26,6 +26,7 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+/******************************************************* Movement and mouse look */
 private:
 	/** Base turn rate, in deg/sec. Other scaling may affect turn rate */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
@@ -86,4 +87,23 @@ protected:
 	*/
 	void Lookup(float Value);
 
+
+/******************************************************* Camera */
+private: 
+	/** Camera attached to this character */
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
+	class UCameraComponent* PlayerCamera;
+
+	/** Default camera FOV */
+	float CameraDefaultFOV;
+
+	/** Zoomed camera FOV */
+	float CameraZoomedFOV;
+
+	/** Current FOV this frame */
+	float CameraCurrentFOV;
+
+	/** Zoom interpolation speed when aiming */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Combat, meta = (AllowPrivateAccess = "true"))
+	float ZoomInterpSpeed;
 };

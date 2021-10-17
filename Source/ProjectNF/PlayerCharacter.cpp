@@ -2,6 +2,7 @@
 
 
 #include "PlayerCharacter.h"
+#include "Camera/CameraComponent.h"
 
 /******************************************************* Constructor and engine functions */
 
@@ -10,17 +11,29 @@ APlayerCharacter::APlayerCharacter() :
 	// Base rates
 	BaseTurnRate(45.f),
 	BaseLookupRate(45.f),
+
 	// Mouselook sensitivity scale factors
 	MouseHipTurnRate(1.0f),
 	MouseHipLookupRate(1.0f),
 	MouseAimingTurnRate(0.4f),
 	MouseAimingLookupRate(0.4f),
+	
 	// true when aiming
-	bAiming(false)
+	bAiming(false),
+
+	// Camera FOV values
+	CameraDefaultFOV(0.f), // set in BeginPlay
+	CameraZoomedFOV(35.f),
+	CameraCurrentFOV(0.f), // set in BeginPlay
+	ZoomInterpSpeed(20.f)
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+	// Create the camera and attach it to the root component
+	PlayerCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("PlayerCamera"));
+	PlayerCamera->SetupAttachment(RootComponent);
+	PlayerCamera->bUsePawnControlRotation = true;
 }
 
 // Called when the game starts or when spawned
