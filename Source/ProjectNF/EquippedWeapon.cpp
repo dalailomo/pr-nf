@@ -3,6 +3,7 @@
 
 #include "EquippedWeapon.h"
 #include "PickupWeapon.h"
+#include "Pickup.h"
 
 // Sets default values
 AEquippedWeapon::AEquippedWeapon()
@@ -16,7 +17,7 @@ AEquippedWeapon::AEquippedWeapon()
 void AEquippedWeapon::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 }
 
 // Called every frame
@@ -31,6 +32,6 @@ void AEquippedWeapon::PickWeapon(APickupWeapon* Weapon)
 	bIsActive = true;
 	Ammo += Weapon->GetAmmoAmount();
 
-	UE_LOG(LogTemp, Warning, TEXT("PickWeapon"));
+	UE_LOG(LogTemp, Warning, TEXT("PickWeapon %s"), *FString::FromInt(Weapon->GetDebugID()));
 }
 

@@ -23,8 +23,8 @@ UCLASS(Abstract)
 class PROJECTNF_API APickup : public AActor
 {
 	GENERATED_BODY()
-	
-public:	
+
+public:
 	// Sets default values for this actor's properties
 	APickup();
 
@@ -32,7 +32,7 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
+public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
@@ -40,9 +40,12 @@ private:
 	/** Enable item tracing when overlapped */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Item Properties", meta = (AllowPrivateAccess = "true"))
 	class USphereComponent* AreaSphere;
-	
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Properties", meta = (AllowPrivateAccess = "true"))
 	P_Name Name;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Debug", meta = (AllowPrivateAccess = "true"))
+	int DebugID;
 
 protected:
 	// remember we need UFUNCTION macro for functions used as callbacks
@@ -59,4 +62,6 @@ protected:
 
 public:
 	FORCEINLINE P_Name GetName() { return Name; }
+	FORCEINLINE int GetDebugID() { return DebugID; }
+
 };
