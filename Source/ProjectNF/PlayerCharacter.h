@@ -19,13 +19,12 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
+public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
 
 /*********************************************************************************/
 /******************************************************* Movement and mouse look */
@@ -90,12 +89,10 @@ protected:
 	*/
 	void Lookup(float Value);
 
-
-
 /****************************************************************/
 /******************************************************* Camera */
 /****************************************************************/
-private: 
+private:
 	/** Camera attached to this character */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	class UCameraComponent* PlayerCamera;
@@ -115,8 +112,7 @@ private:
 
 	/** Camera shake component */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Camera, meta = (AllowPrivateAccess = "true"))
-	TSubclassOf<UCameraShake> CameraHeadBobbing;
-
+	TSubclassOf<class UCameraShake> CameraHeadBobbing;
 
 	/*******************************************************************/
 	/******************************************************* Inventory */
