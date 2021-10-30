@@ -4,11 +4,15 @@
 #include "PlayerCharacter.h"
 #include "Camera/CameraComponent.h"
 #include "InventoryComponent.h"
+#include "Components/InputComponent.h"
+#include "GameFramework/Controller.h"
+#include "GameFramework/PlayerController.h"
+
 
 /******************************************************* Constructor and engine functions */
 
 // Sets default values
-APlayerCharacter::APlayerCharacter() : 
+APlayerCharacter::APlayerCharacter() :
 	// Base rates
 	BaseTurnRate(45.f),
 	BaseLookupRate(45.f),
@@ -18,7 +22,7 @@ APlayerCharacter::APlayerCharacter() :
 	MouseHipLookupRate(1.0f),
 	MouseAimingTurnRate(0.4f),
 	MouseAimingLookupRate(0.4f),
-	
+
 	// true when aiming
 	bAiming(false),
 
@@ -44,7 +48,7 @@ APlayerCharacter::APlayerCharacter() :
 void APlayerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 }
 
 // Called every frame

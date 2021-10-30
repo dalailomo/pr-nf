@@ -25,7 +25,7 @@ void UInventoryComponent::BeginPlay()
 	Super::BeginPlay();
 
 	// ...
-	
+
 }
 
 
@@ -39,36 +39,7 @@ void UInventoryComponent::TickComponent(float DeltaTime, ELevelTick TickType, FA
 
 void UInventoryComponent::HandleWeaponPick(APickupWeapon* Weapon)
 {
-	switch (Weapon->GetName())
-	{
-		case P_Name::PN_Weapon_Crossbow:
-			EquippedCrossbow->GetDefaultObject<AEquippedWeapon>()->PickWeapon(Weapon);
-			break;
-
-		case P_Name::PN_Weapon_Shotgun:
-			EquippedShotgun->GetDefaultObject<AEquippedWeapon>()->PickWeapon(Weapon);
-			break;
-
-		case P_Name::PN_Weapon_ThunderFist:
-			EquippedThunderFist->GetDefaultObject<AEquippedWeapon>()->PickWeapon(Weapon);
-			break;
-
-		case P_Name::PN_Weapon_ObsidianSword:
-			EquippedObsidianSword->GetDefaultObject<AEquippedWeapon>()->PickWeapon(Weapon);
-			break;
-
-		case P_Name::PN_Weapon_BookOfSun:
-			EquippedBookOfSun->GetDefaultObject<AEquippedWeapon>()->PickWeapon(Weapon);
-			break;
-
-		case P_Name::PN_Weapon_AbyssStaff:
-			EquippedAbyssStaff->GetDefaultObject<AEquippedWeapon>()->PickWeapon(Weapon);
-			break;
-
-		case P_Name::PN_Weapon_Ruin:
-			EquippedRuin->GetDefaultObject<AEquippedWeapon>()->PickWeapon(Weapon);
-			break;
-	}
+	EquippedWeapon->GetDefaultObject<AEquippedWeapon>()->PickWeapon(Weapon);
 }
 
 void UInventoryComponent::HandlePowerUpPick(APickupPowerUp* PowerUp, APlayerCharacter* PlayerCharacter)
