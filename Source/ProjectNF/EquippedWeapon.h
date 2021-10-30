@@ -22,8 +22,8 @@ UCLASS()
 class PROJECTNF_API AEquippedWeapon : public AActor
 {
 	GENERATED_BODY()
-	
-public:	
+
+public:
 	// Sets default values for this actor's properties
 	AEquippedWeapon();
 
@@ -31,7 +31,7 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
+public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
@@ -59,6 +59,10 @@ private:
 	/** Ammo amount */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Combat, meta = (AllowPrivateAccess = "true"))
 	float Ammo;
+
+	/**Damage type */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Combat, meta = (AllowPrivateAccess = "true"))
+	EW_DamageType DamageType;
 
 public:
 	void PickWeapon(class APickupWeapon* Weapon);
