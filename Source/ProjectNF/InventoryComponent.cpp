@@ -39,7 +39,17 @@ void UInventoryComponent::TickComponent(float DeltaTime, ELevelTick TickType, FA
 
 void UInventoryComponent::HandleWeaponPick(APickupWeapon* Weapon)
 {
-	EquippedWeapon->GetDefaultObject<AEquippedWeapon>()->PickWeapon(Weapon);
+	TSubclassOf<AEquippedWeapon> FoundWeaponSubClass = EquippedWeapons[Weapon->GetName()];
+
+	if (FoundWeaponSubClass)
+	{
+		AEquippedWeapon* FoundWeaponClass = FoundWeaponSubClass->GetDefaultObject<AEquippedWeapon>();
+
+		if (FoundWeaponClass)
+		{
+			FoundWeaponClass->PickWeapon(Weapon);
+		}
+	}
 }
 
 void UInventoryComponent::HandlePowerUpPick(APickupPowerUp* PowerUp, APlayerCharacter* PlayerCharacter)

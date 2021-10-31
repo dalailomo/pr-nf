@@ -114,13 +114,23 @@ private:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	TSubclassOf<class UCameraShake> CameraHeadBobbing;
 
-	/*******************************************************************/
-	/******************************************************* Inventory */
-	/*******************************************************************/
+
+/*******************************************************************/
+/******************************************************* Inventory */
+/*******************************************************************/
 private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Inventory, meta = (AllowPrivateAccess = "true"))
 	class UInventoryComponent* Inventory;
 
 public:
 	FORCEINLINE UInventoryComponent* GetInventory() { return Inventory; }
+
+
+/****************************************************************/
+/******************************************************* Meshes */
+/****************************************************************/
+private:
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = Inventory, meta = (AllowPrivateAccess = "true"))
+	class USkeletalMeshComponent* WeaponSkeletalMesh;
+
 };

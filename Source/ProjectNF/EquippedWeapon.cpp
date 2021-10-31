@@ -10,7 +10,6 @@ AEquippedWeapon::AEquippedWeapon()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-
 }
 
 // Called when the game starts or when spawned
@@ -29,9 +28,6 @@ void AEquippedWeapon::Tick(float DeltaTime)
 
 void AEquippedWeapon::PickWeapon(APickupWeapon* Weapon)
 {
-	bIsActive = true;
 	Ammo += Weapon->GetAmmoAmount();
-
-	UE_LOG(LogTemp, Warning, TEXT("PickWeapon %s"), *FString::FromInt(Weapon->GetDebugID()));
 }
 

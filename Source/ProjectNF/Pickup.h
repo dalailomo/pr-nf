@@ -44,9 +44,6 @@ private:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Properties", meta = (AllowPrivateAccess = "true"))
 	P_Name Name;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Debug", meta = (AllowPrivateAccess = "true"))
-	int DebugID;
-
 protected:
 	// remember we need UFUNCTION macro for functions used as callbacks
 	/** Called when overlapping AreaSphere */
@@ -62,6 +59,5 @@ protected:
 
 public:
 	FORCEINLINE P_Name GetName() { return Name; }
-	FORCEINLINE int GetDebugID() { return DebugID; }
 
 };

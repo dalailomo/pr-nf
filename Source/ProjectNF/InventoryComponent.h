@@ -3,8 +3,10 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Components/ActorComponent.h"
 #include "EquippedWeapon.h"
+#include "Pickup.h"
+#include "Components/ActorComponent.h"
+
 #include "InventoryComponent.generated.h"
 
 
@@ -27,7 +29,7 @@ public:
 
 private:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Combat, meta = (AllowPrivateAccess = "true"))
-	TSubclassOf<AEquippedWeapon> EquippedWeapon;
+	TMap<P_Name, TSubclassOf<AEquippedWeapon>> EquippedWeapons;
 
 	void HandleWeaponPick(class APickupWeapon* Weapon);
 	void HandlePowerUpPick(class APickupPowerUp* PowerUp, class APlayerCharacter* PlayerCharacter);

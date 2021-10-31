@@ -36,10 +36,6 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 private:
-	/** Weapon can be used or not */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Combat, meta = (AllowPrivateAccess = "true"))
-	bool bIsActive;
-
 	/** Firing rate measured in projectiles per minute */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Combat, meta = (AllowPrivateAccess = "true"))
 	float FiringRate;
@@ -58,7 +54,7 @@ private:
 
 	/** Ammo amount */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Combat, meta = (AllowPrivateAccess = "true"))
-	float Ammo;
+	int Ammo;
 
 	/**Damage type */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Combat, meta = (AllowPrivateAccess = "true"))

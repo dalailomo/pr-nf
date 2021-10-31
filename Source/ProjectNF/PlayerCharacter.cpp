@@ -5,6 +5,7 @@
 #include "Camera/CameraComponent.h"
 #include "InventoryComponent.h"
 #include "Components/InputComponent.h"
+#include "Components/SkeletalMeshComponent.h"
 #include "GameFramework/Controller.h"
 #include "GameFramework/PlayerController.h"
 
@@ -42,6 +43,11 @@ APlayerCharacter::APlayerCharacter() :
 
 	// Create the inventory component
 	Inventory = CreateDefaultSubobject<UInventoryComponent>(TEXT("Inventory"));
+
+	// Create the weapon mesh used by the character
+	WeaponSkeletalMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("WeaponSkeletalMesh"));
+	WeaponSkeletalMesh->SetupAttachment(PlayerCamera);
+
 }
 
 // Called when the game starts or when spawned
