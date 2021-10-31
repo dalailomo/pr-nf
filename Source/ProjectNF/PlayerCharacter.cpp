@@ -42,7 +42,7 @@ APlayerCharacter::APlayerCharacter() :
 	PlayerCamera->bUsePawnControlRotation = true;
 
 	// Create the inventory component
-	Inventory = CreateDefaultSubobject<UInventoryComponent>(TEXT("Inventory"));
+	InventoryComponent = CreateDefaultSubobject<UInventoryComponent>(TEXT("Inventory"));
 
 	// Create the weapon mesh used by the character
 	WeaponSkeletalMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("WeaponSkeletalMesh"));

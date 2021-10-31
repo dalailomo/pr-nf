@@ -119,17 +119,17 @@ private:
 /******************************************************* Inventory */
 /*******************************************************************/
 private:
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Inventory, meta = (AllowPrivateAccess = "true"))
-	class UInventoryComponent* Inventory;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = InventoryComponent, meta = (AllowPrivateAccess = "true"))
+	class UInventoryComponent* InventoryComponent;
 
 public:
-	FORCEINLINE UInventoryComponent* GetInventory() { return Inventory; }
+	FORCEINLINE UInventoryComponent* GetInventoryComponent() { return InventoryComponent; }
 
 /****************************************************************/
 /******************************************************* Meshes */
 /****************************************************************/
 private:
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = Inventory, meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = InventoryComponent, meta = (AllowPrivateAccess = "true"))
 	class USkeletalMeshComponent* WeaponSkeletalMesh;
 
 };

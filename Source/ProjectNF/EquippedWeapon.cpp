@@ -17,6 +17,7 @@ void AEquippedWeapon::BeginPlay()
 {
 	Super::BeginPlay();
 
+	Ammo = 0;
 }
 
 // Called every frame

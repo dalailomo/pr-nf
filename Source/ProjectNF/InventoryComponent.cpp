@@ -51,32 +51,31 @@ void UInventoryComponent::HandleWeaponPick(APickupWeapon* PickedWeapon)
 	// TODO find out if weapon is enabled. if not, enable it and set it as the active one
 }
 
-void UInventoryComponent::HandlePowerUpPick(APickupPowerUp* PowerUp, APlayerCharacter* PlayerCharacter)
+void UInventoryComponent::HandlePowerUpPick(APickupPowerUp* PickedPowerUp, APlayerCharacter* PlayerCharacter)
 {
 }
 
-void UInventoryComponent::HandleItemPick(APickupItem* Item, APlayerCharacter* PlayerCharacter)
+void UInventoryComponent::HandleItemPick(APickupItem* PickedItem, APlayerCharacter* PlayerCharacter)
 {
 }
 
-void UInventoryComponent::Pick(APickup* Pickup, APlayerCharacter* PlayerCharacter)
+void UInventoryComponent::Pick(APickup* PickedActor, APlayerCharacter* PlayerCharacter)
 {
-	if (Pickup)
+	if (!PickedActor) return;
+	
+	if (APickupWeapon* PickedWeapon = Cast<APickupWeapon>(PickedActor))
 	{
-		if (APickupWeapon* Weapon = Cast<APickupWeapon>(Pickup))
-		{
-			HandleWeaponPick(Weapon);
-		}
-		else if (APickupPowerUp* PowerUp = Cast<APickupPowerUp>(Pickup))
-		{
-			HandlePowerUpPick(PowerUp, PlayerCharacter);
-		}
-		else if (APickupItem* Item = Cast<APickupItem>(Pickup))
-		{
-			HandleItemPick(Item, PlayerCharacter);
-		}
-
-		Pickup->Destroy();
+		HandleWeaponPick(PickedWeapon);
 	}
+	else if (APickupPowerUp* PickedPowerUp = Cast<APickupPowerUp>(PickedActor))
+	{
+		HandlePowerUpPick(PickedPowerUp, PlayerCharacter);
+	}
+	else if (APickupItem* PickedItem = Cast<APickupItem>(PickedActor))
+	{
+		HandleItemPick(PickedItem, PlayerCharacter);
+	}
+
+	PickedActor->Destroy();
 }
 

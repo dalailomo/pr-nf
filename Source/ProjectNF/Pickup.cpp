@@ -44,9 +44,9 @@ void APickup::OnSphereOverlap(
 	APlayerCharacter* PlayerCharacter = Cast<APlayerCharacter>(OtherActor);
 	if (!PlayerCharacter) return;
 
-	UInventoryComponent* Inventory = PlayerCharacter->GetInventory();
-	if (!Inventory) return;
+	UInventoryComponent* InventoryComponent = PlayerCharacter->GetInventoryComponent();
+	if (!InventoryComponent) return;
 		
-	Inventory->Pick(this, PlayerCharacter);
+	InventoryComponent->Pick(this, PlayerCharacter);
 }
 

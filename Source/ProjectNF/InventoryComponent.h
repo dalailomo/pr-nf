@@ -31,9 +31,9 @@ private:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Combat, meta = (AllowPrivateAccess = "true"))
 	TMap<P_Name, TSubclassOf<AEquippedWeapon>> EquippedWeapons;
 
-	void HandleWeaponPick(class APickupWeapon* Weapon);
-	void HandlePowerUpPick(class APickupPowerUp* PowerUp, class APlayerCharacter* PlayerCharacter);
-	void HandleItemPick(class APickupItem* Item, class APlayerCharacter* PlayerCharacter);
+	void HandleWeaponPick(class APickupWeapon* PickedWeapon);
+	void HandlePowerUpPick(class APickupPowerUp* PickedPowerUp, class APlayerCharacter* PlayerCharacter);
+	void HandleItemPick(class APickupItem* PickedItem, class APlayerCharacter* PlayerCharacter);
 
 public:
 	void Pick(class APickup* Pickup, class APlayerCharacter* PlayerCharacter);
