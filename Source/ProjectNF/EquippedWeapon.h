@@ -61,5 +61,5 @@ private:
 	EW_DamageType DamageType;
 
 public:
-	void PickWeapon(class APickupWeapon* Weapon);
+	void IncrementAmmo(class APickupWeapon* Weapon);
 };

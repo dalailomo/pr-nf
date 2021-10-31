@@ -39,20 +39,14 @@ void APickup::OnSphereOverlap(
 	bool bFromSweep,
 	const FHitResult& SweepResult
 ) {
-	if (OtherActor)
-	{
-		APlayerCharacter* PlayerCharacter = Cast<APlayerCharacter>(OtherActor);
+	if (!OtherActor) return;
+	
+	APlayerCharacter* PlayerCharacter = Cast<APlayerCharacter>(OtherActor);
+	if (!PlayerCharacter) return;
 
-		if (PlayerCharacter)
-		{
-			UInventoryComponent* Inventory = PlayerCharacter->GetInventory();
-
-			if (Inventory)
-			{
-				Inventory->Pick(this, PlayerCharacter);
-			}
-			
-		}
-	}
+	UInventoryComponent* Inventory = PlayerCharacter->GetInventory();
+	if (!Inventory) return;
+		
+	Inventory->Pick(this, PlayerCharacter);
 }
 

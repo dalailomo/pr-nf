@@ -7,6 +7,7 @@
 #include "PickupPowerUp.h"
 #include "PickupItem.h"
 #include "EquippedWeapon.h"
+#include "PlayerCharacter.h"
 
 // Sets default values for this component's properties
 UInventoryComponent::UInventoryComponent()
@@ -37,19 +38,17 @@ void UInventoryComponent::TickComponent(float DeltaTime, ELevelTick TickType, FA
 	// ...
 }
 
-void UInventoryComponent::HandleWeaponPick(APickupWeapon* Weapon)
+void UInventoryComponent::HandleWeaponPick(APickupWeapon* PickedWeapon)
 {
-	TSubclassOf<AEquippedWeapon> FoundWeaponSubClass = EquippedWeapons[Weapon->GetName()];
+	TSubclassOf<AEquippedWeapon> FoundEquippedWeaponSubClass = EquippedWeapons[PickedWeapon->GetName()];
+	if (!FoundEquippedWeaponSubClass) return;
 
-	if (FoundWeaponSubClass)
-	{
-		AEquippedWeapon* FoundWeaponClass = FoundWeaponSubClass->GetDefaultObject<AEquippedWeapon>();
+	AEquippedWeapon* FoundEquippedWeaponClass = FoundEquippedWeaponSubClass->GetDefaultObject<AEquippedWeapon>();
+	if (!FoundEquippedWeaponClass) return;
 
-		if (FoundWeaponClass)
-		{
-			FoundWeaponClass->PickWeapon(Weapon);
-		}
-	}
+	FoundEquippedWeaponClass->IncrementAmmo(PickedWeapon);
+
+	// TODO find out if weapon is enabled. if not, enable it and set it as the active one
 }
 
 void UInventoryComponent::HandlePowerUpPick(APickupPowerUp* PowerUp, APlayerCharacter* PlayerCharacter)

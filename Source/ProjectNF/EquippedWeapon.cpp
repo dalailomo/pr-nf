@@ -26,8 +26,8 @@ void AEquippedWeapon::Tick(float DeltaTime)
 
 }
 
-void AEquippedWeapon::PickWeapon(APickupWeapon* Weapon)
+void AEquippedWeapon::IncrementAmmo(APickupWeapon* PickedWeapon)
 {
-	Ammo += Weapon->GetAmmoAmount();
+	Ammo += PickedWeapon->GetAmmoAmount();
 }
 
