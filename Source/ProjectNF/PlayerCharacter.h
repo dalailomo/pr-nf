@@ -125,6 +125,9 @@ private:
 public:
 	FORCEINLINE UInventoryComponent* GetInventoryComponent() { return InventoryComponent; }
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void ReceiveOnWeaponPicked();
+
 /****************************************************************/
 /******************************************************* Meshes */
 /****************************************************************/

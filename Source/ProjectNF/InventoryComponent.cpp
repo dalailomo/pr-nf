@@ -29,7 +29,6 @@ void UInventoryComponent::BeginPlay()
 
 }
 
-
 // Called every frame
 void UInventoryComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
@@ -38,7 +37,7 @@ void UInventoryComponent::TickComponent(float DeltaTime, ELevelTick TickType, FA
 	// ...
 }
 
-void UInventoryComponent::HandleWeaponPick(APickupWeapon* PickedWeapon)
+void UInventoryComponent::HandleWeaponPick(APickupWeapon* PickedWeapon, APlayerCharacter* PlayerCharacter)
 {
 	TSubclassOf<AEquippedWeapon> FoundEquippedWeaponSubClass = EquippedWeapons[PickedWeapon->GetName()];
 	if (!FoundEquippedWeaponSubClass) return;
@@ -48,7 +47,7 @@ void UInventoryComponent::HandleWeaponPick(APickupWeapon* PickedWeapon)
 
 	FoundEquippedWeaponClass->IncrementAmmo(PickedWeapon);
 
-	// TODO find out if weapon is enabled. if not, enable it and set it as the active one
+	PlayerCharacter->ReceiveOnWeaponPicked();
 }
 
 void UInventoryComponent::HandlePowerUpPick(APickupPowerUp* PickedPowerUp, APlayerCharacter* PlayerCharacter)
@@ -65,7 +64,7 @@ void UInventoryComponent::Pick(APickup* PickedActor, APlayerCharacter* PlayerCha
 	
 	if (APickupWeapon* PickedWeapon = Cast<APickupWeapon>(PickedActor))
 	{
-		HandleWeaponPick(PickedWeapon);
+		HandleWeaponPick(PickedWeapon, PlayerCharacter);
 	}
 	else if (APickupPowerUp* PickedPowerUp = Cast<APickupPowerUp>(PickedActor))
 	{
