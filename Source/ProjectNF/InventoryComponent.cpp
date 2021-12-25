@@ -47,15 +47,17 @@ void UInventoryComponent::HandleWeaponPick(APickupWeapon* PickedWeapon, APlayerC
 
 	FoundEquippedWeaponClass->IncrementAmmo(PickedWeapon);
 
-	PlayerCharacter->ReceiveOnWeaponPicked();
+	PlayerCharacter->ReceiveOnWeaponPicked(PickedWeapon);
 }
 
 void UInventoryComponent::HandlePowerUpPick(APickupPowerUp* PickedPowerUp, APlayerCharacter* PlayerCharacter)
 {
+	PlayerCharacter->ReceiveOnPowerUpPicked(PickedPowerUp);
 }
 
 void UInventoryComponent::HandleItemPick(APickupItem* PickedItem, APlayerCharacter* PlayerCharacter)
 {
+	PlayerCharacter->ReceiveOnItemPicked(PickedItem);
 }
 
 void UInventoryComponent::Pick(APickup* PickedActor, APlayerCharacter* PlayerCharacter)

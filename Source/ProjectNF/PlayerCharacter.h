@@ -126,7 +126,13 @@ public:
 	FORCEINLINE UInventoryComponent* GetInventoryComponent() { return InventoryComponent; }
 
 	UFUNCTION(BlueprintImplementableEvent)
-	void ReceiveOnWeaponPicked();
+	void ReceiveOnWeaponPicked(class APickupWeapon* PickedWeapon);
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void ReceiveOnPowerUpPicked(class APickupPowerUp* PickedPowerUp);
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void ReceiveOnItemPicked(class APickupItem* PickedItem);
 
 /****************************************************************/
 /******************************************************* Meshes */
