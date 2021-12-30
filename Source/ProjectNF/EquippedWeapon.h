@@ -7,6 +7,20 @@
 #include "EquippedWeapon.generated.h"
 
 UENUM(BlueprintType)
+enum class EW_Name : uint8
+{
+	// Weapons
+	EWN_Weapon_Nothing			UMETA(DisplayName = "Nothing equipped"),
+	EWN_Weapon_Crossbow			UMETA(DisplayName = "Equipped Crossbow"),
+	EWN_Weapon_Shotgun			UMETA(DisplayName = "Equipped Shotgun"),
+	EWN_Weapon_ThunderFist		UMETA(DisplayName = "Equipped Thunder fist"),
+	EWN_Weapon_ObsidianSword	UMETA(DisplayName = "Equipped Obsidian sword"),
+	EWN_Weapon_BookOfSun		UMETA(DisplayName = "Equipped Book of sun"),
+	EWN_Weapon_AbyssStaff		UMETA(DisplayName = "Equipped Abyss staff"),
+	EWN_Weapon_Ruin				UMETA(DisplayName = "Equipped Ruin")
+};
+
+UENUM(BlueprintType)
 enum class EW_DamageType : uint8
 {
 	EWDT_Blood		UMETA(DisplayName = "Blood"),
